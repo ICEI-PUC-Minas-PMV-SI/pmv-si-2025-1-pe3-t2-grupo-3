@@ -1,37 +1,35 @@
-# 1. INTRODUÇÃO
+1. INTRODUÇÃO
+O advento das plataformas de streaming revolucionou a forma como consumimos conteúdo audiovisual, oferecendo uma vasta gama de opções personalizadas com base em algoritmos de recomendação. Esses algoritmos, impulsionados por técnicas de machine learning, analisam dados de consumo dos usuários para sugerir conteúdos que maximizem o engajamento e a satisfação.
+No entanto, essa personalização, embora seja eficiente, não está isenta de críticas. Diante desse cenário, um dos principais problemas é a exposição repetidamente a conteúdos semelhantes aos que já consomem, limitando sua diversidade de escolhas e reduzindo a oportunidade de descobrir novas perspectivas.
+Nesse contexto, este trabalho propõe o desenvolvimento de uma plataforma de streaming que ofereça uma personalização avançada, indo além do histórico de visualização tradicional ao incorporar fatores como o humor do usuário e o horário de acesso para recomendar conteúdos mais alinhados ao momento e ao estado emocional do espectador.	
+Além disso, a plataforma permitirá a criação de perfis personalizados, onde os usuários poderão definir preferências específicas. Por fim, para ampliar a interatividade, será possível comentar nos conteúdos audiovisuais, proporcionando uma experiência mais dinâmica, enquanto contribui para o refinamento contínuo do sistema de recomendações
 
-A área de streaming de vídeo e áudio tem crescido exponencialmente nos últimos anos, impulsionada pela popularização de serviços como Netflix, Spotify e YouTube. De acordo com a Cisco (2022), o tráfego global de vídeo deve representar 82% de todo o tráfego da internet até 2025. Além disso, a experiência do usuário (UX) e a interface do usuário (UI) tornaram-se fatores críticos para o sucesso dessas plataformas, uma vez que a usabilidade e a satisfação do usuário estão diretamente ligadas à retenção e engajamento (NIELSEN, 2022). Nesse contexto, o design de interfaces intuitivas e a personalização de conteúdo são desafios centrais para plataformas de streaming. 
+1.1. Problema
+Como superar as limitações dos algoritmos de recomendação para oferecer uma experiência mais diversificada ao usuário?
 
-## 1.1. Problema
+1.2. Objetivos do trabalho
+1.2.1.	Objetivo Geral
+Desenvolver uma plataforma de streaming que apresente uma experiência mais diversificada ao usuário, utilizando dados como humor, horário de acesso e preferências específicas para recomendar conteúdo.
 
-Atualmente, os usuários de plataformas de streaming enfrentam desafios como a descoberta de conteúdo relevante, interfaces complexas e falta de personalização. Estudos recentes indicam que 60% dos usuários abandonam plataformas devido à dificuldade em encontrar conteúdo de interesse (SPRINGER, 2023). Além disso, a saturação do mercado tem levado à necessidade de diferenciação por meio de experiências de usuário mais envolventes e adaptativas. O problema central, portanto, é a falta de uma plataforma que combine uma interface intuitiva, algoritmos de recomendação eficientes e personalização baseada no comportamento do usuário.
+1.2.2.	Objetivos Específicos
+a.	Desenvolver uma plataforma de streaming;
+b.	Desenvolver um sistema de cadastro de usuários;
+c.	Permitir ao usuário informar seu estado emocional (humor) no momento do login, por meio de seleção manual;
+d.	Criar funcionalidades de personalização do usuário, permitindo que ajustem suas preferências;
+e.	Permitir ao usuário fornecer um comentário após a interação com o conteúdo audiovisual;
+f.	Implementar um algoritmo para integrar o perfil de usuário, humor, histórico de visualizações, horário de acesso, e feedback para gerar recomendações personalizadas.
 
-## 1.2. Objetivos do trabalho
+1.3. Justificativa
+Busca-se o desenvolvimento de uma plataforma de streaming que supere as limitações dos algoritmos de recomendação atuais, os quais, em sua maioria, baseiam-se no histórico de visualização do usuário, negligenciando aspectos emocionais que influenciam diretamente a escolha de conteúdos audiovisuais. 
+Nesse sentido, a proposta deste trabalho justifica-se pela necessidade de integrar fatores como o humor do usuário e o horário de acesso ao processo de recomendação, criando um sistema mais sensível ao contexto e às preferências momentâneas do espectador.
+A inclusão da funcionalidade de comentar nos conteúdos enriquece a experiência do usuário, que vai além da simples visualização passiva. Além disso, a possibilidade de criar perfis personalizados, permite uma customização mais refinada, garantido que as recomendações de conteúdo sejam alinhadas a cada usuário. 
+Portanto, implementação de um sistema de recomendação que considera múltiplas variáveis — como humor, horário, preferências e feedbacks do usuário – representa um avanço nas plataformas de streaming. 
 
-Objetivo Geral:
-Desenvolver uma plataforma de streaming que oferece uma experiência de usuário persona-lizada e intuitiva, utilizando técnicas avançadas de UI/UX design e algoritmos de recomenda-ção.
- 
-Objetivos Específicos:
- 
-1.	Projetar uma interface de usuário que priorize a usabilidade e a acessibilidade.
- 
-2.	Realizar testes de usabilidade para validar a eficácia da interface e das funcionalida-des propostas.
- 
-3.	Integrar tecnologias de streaming de alta performance para garantir qualidade e esta-bilidade na reprodução de conteúdo.
+1.4. Público alvo
+O público alvo abrange uma variedade de perfis de usuários. A seguir, descreve-se alguns exemplos:
+a.	Usuários gerais de streaming: pessoas que consomem conteúdo audiovisual regularmente, com diferentes níveis de familiaridade com a tecnologia;
+b.	Entusiastas de tecnologia: indivíduos que valorizam interfaces modernas e recursos personalizados;
+c.	Profissionais de conteúdo: criadores de conteúdo que buscam uma plataforma intuitiva para distribuir e monetizar seu trabalho. 
 
-
-## 1.3. Justificativa
-
-A crescente demanda por plataformas de streaming que ofereçam não apenas conteúdo diversificado, mas também uma experiência de usuário superior. Segundo um estudo da ACM (2022), a personalização e a usabilidade são os principais fatores que influenciam a satisfação do usuário em plataformas digitais. Além disso, a implementação de técnicas avançadas de UI/UX design pode reduzir a taxa de churn (cancelamento de assinaturas) em até 30% (IEEE, 2023). Portanto, este trabalho visa contribuir para a evolução das plataformas de streaming, oferecendo uma solução que combine inovação tecnológica e design centrado no usuário.
-
-## 1.4. Público alvo
-
-O público-alvo da plataforma inclui:
-•	 Usuários gerais de streaming: Pessoas que consomem conteúdo audiovisual regu-larmente, com diferentes níveis de familiaridade com a tecnologia.
-
-•	Entusiastas de tecnologia: Indivíduos que valorizam interfaces modernas e recursos personalizados.
-
-•	Profissionais de conteúdo: Criadores de conteúdo que buscam uma plataforma intuiti-va para distribuir e monetizar seu trabalho.
-
-Estudos da SBC (2023) destacam que o perfil dos usuários de streaming varia desde jovens adultos, que priorizam a mobilidade e a personalização, até adultos mais velhos, que valori-zam a simplicidade e a acessibilidade. Portanto, a plataforma deve ser projetada para atender a uma ampla gama de usuários, considerando suas necessidades e preferências.
-
+Destaca-se que o perfil dos usuários de streaming é bastante heterogêneo, variando desde jovens, que priorizam a personalização e a interatividade, até adultos, que valorizam a simplicidade e a facilidade de uso. Essa diversidade de perfis reforça a necessidade de uma plataforma que seja ao mesmo tempo versátil e adaptável, sem comprometer a qualidade da experiência oferecida. 
+ 
