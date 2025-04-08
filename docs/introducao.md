@@ -1,4 +1,5 @@
-1. INTRODUÇÃO
+#1. INTRODUÇÃO
+
 O advento das plataformas de streaming revolucionou a forma como consumimos conteúdo audiovisual, oferecendo uma vasta gama de opções personalizadas com base em algoritmos de recomendação. Esses algoritmos, impulsionados por técnicas de machine learning, analisam dados de consumo dos usuários para sugerir conteúdos que maximizem o engajamento e a satisfação.
 No entanto, essa personalização, embora seja eficiente, não está isenta de críticas. Diante desse cenário, um dos principais problemas é a exposição repetidamente a conteúdos semelhantes aos que já consomem, limitando sua diversidade de escolhas e reduzindo a oportunidade de descobrir novas perspectivas.
 Nesse contexto, este trabalho propõe o desenvolvimento de uma plataforma de streaming que ofereça uma personalização avançada, indo além do histórico de visualização tradicional ao incorporar fatores como o humor do usuário e o horário de acesso para recomendar conteúdos mais alinhados ao momento e ao estado emocional do espectador.	
