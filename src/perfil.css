@@ -1,0 +1,273 @@
+/* perfil.css */
+
+/* Importar variáveis e estilos base do seu style.css, se desejar */
+/* @import url('style.css'); */
+
+/* Variáveis CSS (se não estiver importando style.css) */
+:root {
+    --primary-bg: #141414; /* Fundo principal escuro */
+    --secondary-bg: #282828; /* Fundo de elementos */
+    --text-color: #e0e0e0; /* Cor principal do texto */
+    --highlight-color: #e50914; /* Vermelho Netflix/Destaque */
+    --light-text: #a0a0a0; /* Texto mais claro para detalhes */
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reutilizando estilos do cabeçalho e rodapé do style.css */
+/* Certifique-se de que o style.css esteja linkado no HTML para esses estilos funcionarem */
+.header {
+    background-color: var(--secondary-bg);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--highlight-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-item {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--highlight-color);
+}
+
+.nav-item.active {
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--highlight-color);
+    border-radius: 2px;
+}
+
+.footer {
+    background-color: var(--secondary-bg);
+    color: var(--light-text);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+    margin-top: 50px;
+}
+
+
+/* Estilos específicos da página de Perfil */
+.main-content-profile {
+    padding: 30px 40px;
+    max-width: 800px; /* Um pouco mais estreito que a tela inicial para focar */
+    margin: 40px auto;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.section-title-profile {
+    font-size: 2em;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid var(--highlight-color);
+    padding-bottom: 15px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column; /* Para empilhar no mobile */
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    background-color: var(--primary-bg);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--highlight-color);
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.4); /* Sombra mais brilhante para o avatar */
+}
+
+.profile-info h3 {
+    font-size: 1.6em;
+    margin: 10px 0 5px;
+    color: var(--text-color);
+}
+
+.profile-info p {
+    font-size: 1em;
+    color: var(--light-text);
+    margin: 5px 0;
+}
+
+.edit-profile-btn {
+    background-color: var(--highlight-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.edit-profile-btn:hover {
+    background-color: #ff2a37; /* Um tom um pouco mais claro de vermelho */
+}
+
+.profile-options {
+    background-color: var(--primary-bg);
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.profile-options h3 {
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.profile-options ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-options li {
+    margin-bottom: 15px;
+}
+
+.profile-options a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    padding: 10px 15px;
+    background-color: var(--secondary-bg);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+}
+
+.profile-options a:hover {
+    background-color: var(--highlight-color);
+    color: white;
+}
+
+/* Responsividade para telas menores */
+@media (min-width: 768px) {
+    .profile-card {
+        flex-direction: row; /* Volta a ser linha em telas maiores */
+        text-align: left;
+    }
+
+    .profile-avatar {
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .nav {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .site-title {
+        font-size: 1.5em;
+    }
+
+    .main-content-profile {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .section-title-profile {
+        font-size: 1.8em;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-info h3 {
+        font-size: 1.4em;
+    }
+
+    .profile-info p {
+        font-size: 0.9em;
+    }
+
+    .edit-profile-btn {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .profile-options a {
+        font-size: 1em;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content-profile {
+        padding: 15px;
+    }
+    .profile-card,
+    .profile-options {
+        padding: 20px;
+    }
+}
