@@ -1,0 +1,311 @@
+/* landing-page.css */
+
+/* Variáveis CSS para consistência */
+:root {
+    --primary-bg: #141414; /* Fundo principal escuro */
+    --secondary-bg: #282828; /* Fundo de elementos */
+    --text-color: #e0e0e0; /* Cor principal do texto */
+    --highlight-color: #e50914; /* Vermelho Netflix/Destaque */
+    --light-text: #a0a0a0; /* Texto mais claro para detalhes */
+    --darker-text: #707070;
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header da Landing Page */
+.lp-header {
+    background-color: transparent; /* Fundo transparente para o header flutuar sobre a hero section */
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute; /* Permite que ele fique sobre a hero section */
+    width: calc(100% - 80px); /* 100% - padding */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Garante que fique acima de outros elementos */
+}
+
+.lp-site-title {
+    margin: 0;
+    font-size: 2em;
+    color: var(--highlight-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.lp-nav-btn {
+    background-color: var(--highlight-color);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.lp-nav-btn:hover {
+    background-color: #ff2a37;
+}
+
+/* Hero Section (Seção de Destaque) */
+.hero-section {
+    position: relative;
+    height: 700px; /* Altura da hero section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('https://images.unsplash.com/photo-1485846175062-87a136195759?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 0 20px; /* Padding horizontal para evitar que o conteúdo toque as bordas */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 100%); /* Gradiente para escurecer a imagem */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: var(--highlight-color);
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff2a37;
+    transform: scale(1.03);
+}
+
+/* Seção de Funcionalidades */
+.features-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 80px 40px;
+    gap: 30px; /* Espaço entre os itens */
+    background-color: var(--primary-bg);
+    flex-wrap: wrap; /* Para envolver os itens em telas menores */
+    text-align: center;
+}
+
+.feature-item {
+    flex: 1; /* Permite que os itens cresçam e encolham */
+    min-width: 280px; /* Largura mínima para cada item */
+    max-width: 350px;
+    background-color: var(--secondary-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+}
+
+.feature-item i {
+    font-size: 3em; /* Tamanho dos ícones (usando caracteres unicode simples) */
+    color: var(--highlight-color);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1em;
+    color: var(--light-text);
+}
+
+/* Seção de CTA Inferior */
+.cta-bottom-section {
+    background-color: var(--secondary-bg);
+    padding: 60px 40px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.cta-bottom-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.cta-bottom-section p {
+    font-size: 1.2em;
+    color: var(--light-text);
+    margin-bottom: 30px;
+}
+
+.secondary-cta {
+    background-color: transparent;
+    border: 2px solid var(--highlight-color);
+    color: var(--highlight-color);
+}
+
+.secondary-cta:hover {
+    background-color: var(--highlight-color);
+    color: white;
+}
+
+/* Footer da Landing Page */
+.lp-footer {
+    background-color: var(--primary-bg);
+    color: var(--darker-text);
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}
+
+.lp-footer p {
+    margin: 5px 0;
+}
+
+.lp-footer a {
+    color: var(--darker-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.lp-footer a:hover {
+    color: var(--light-text);
+}
+
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .hero-content h2 {
+        font-size: 3em;
+    }
+    .hero-content p {
+        font-size: 1.1em;
+    }
+    .cta-button {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+    .features-section {
+        padding: 60px 20px;
+        flex-direction: column; /* Empilha os itens em telas médias */
+        align-items: center;
+    }
+    .feature-item {
+        margin-bottom: 20px;
+        max-width: 400px; /* Aumenta a largura para itens empilhados */
+    }
+    .lp-header {
+        padding: 15px 20px;
+        width: calc(100% - 40px);
+    }
+    .lp-site-title {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 600px;
+    }
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+    .features-section {
+        padding: 40px 15px;
+    }
+    .feature-item {
+        min-width: unset; /* Remove largura mínima fixa */
+        width: 90%; /* Ocupa mais largura */
+    }
+    .cta-bottom-section {
+        padding: 40px 20px;
+    }
+    .cta-bottom-section h2 {
+        font-size: 2em;
+    }
+    .lp-footer {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lp-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .lp-nav-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .hero-section {
+        height: 500px;
+    }
+    .hero-content h2 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    .cta-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1em;
+    }
+    .feature-item {
+        padding: 20px;
+    }
+}
