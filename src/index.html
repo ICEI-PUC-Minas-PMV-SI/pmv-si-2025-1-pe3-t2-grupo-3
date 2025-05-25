@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTURE STREAMING</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mood-popup.css"> </head>
+<body>
+    <header class="header">
+        <h1 class="site-title">FUTURE STREAMING</h1>
+        <nav class="nav">
+            <a href="#" class="nav-item active">Início</a>
+            <a href="#" class="nav-item">Filmes</a>
+            <a href="#" class="nav-item">Séries</a>
+            <a href="#" class="nav-item">Minha Lista</a>
+            <a href="perfil.html" class="nav-item">Perfil</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="content-section">
+            <h2 class="section-title">Em Destaque</h2>
+            <div class="content-grid">
+                <div class="movie-item">
+                    <img src="https://resizing.flixster.com/mOxGhpYzFmKNsSc6ucumX_RBDVQ=/206x305/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p35545_p_v8_al.jpg" alt="Capa do Filme 1">
+                    <div class="movie-info">
+                        <h3>Constantine 2</h3>
+                        <p>Ano: 2025</p>
+                    </div>
+                </div>
+                <div class="movie-item">
+                    <img src="https://resizing.flixster.com/XW8bBME1RphpJQseisWvSnB1UdI=/206x305/v2/https://resizing.flixster.com/U3YCyXvV0jgUv1Cs3gQAEQJkrPY=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzNiNTBiZGIwLTc3YWYtNDk0ZC04NThkLTZjZDc0MTk0OTNhOS5qcGc=" alt="Capa da Série 1">
+                    <div class="movie-info">
+                        <h3>Missão Impossível</h3>
+                        <p>Ano: 2025</p>
+                    </div>
+                </div>
+                <div class="movie-item">
+                    <img src="https://resizing.flixster.com/VC1QJ4e813TyFcbn4N-JdVHYKSw=/206x305/v2/https://resizing.flixster.com/lhIKIMKOYf_zGspHuq6UkGinzRQ=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2UzZDdjZmQ5LTgzMWQtNGU0My04NjFmLTJiYWQ3YTQ3NGU3MC5qcGc=" alt="Capa do Filme 2">
+                    <div class="movie-info">
+                        <h3>Lilo & Stitch</h3>
+                        <p>Ano: 2025</p>
+                    </div>
+                </div>
+                <div class="movie-item">
+                    <img src="https://resizing.flixster.com/PdY0W4Npx-r6b8N94amjhbDhsTw=/206x305/v2/https://resizing.flixster.com/0denJR04dSiqMALnoaFHG4LMQI0=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2U2NTcwNTU5LWM1OTYtNDA2OC1iNDRmLTMzYzM3ZGEwMGFmMC5qcGc=" alt="Capa da Série 2">
+                    <div class="movie-info">
+                        <h3>Capitão América</h3>
+                        <p>Ano: 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Recomendações baseadas no seu humor</h2>
+            <div class="content-grid">
+                <div class="movie-item">
+                    <img src="https://resizing.flixster.com/3yiVHbQmqA7Ne31nPsa1oQzZkXE=/206x305/v2/https://resizing.flixster.com/03P5JzPRuEJV9MTzulfOIUBM8EQ=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2QyMGMyYmVmLTBiOWEtNGYyOS1iOWQzLTQ2MjlkNWY4ZTg3ZC5qcGc=" alt="Capa do Filme 3">
+                    <div class="movie-info">
+                        <h3>Kingdom Heart</h3>
+                        <p>Ano: 2025</p>
+                    </div>
+                </div>
+                <div class="movie-item">
+                    <img src="https://resizing.flixster.com/pBTjqCowg1HKlTXazOXa84bfXlc=/206x305/v2/https://resizing.flixster.com/HgH3ZRTpzeOE3V303m3deHm-V9w=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzRjODBhMTA2LTMzZTgtNDZkYi04NjZhLWQ0ZjVhNzdjOTM5OS5qcGc=" alt="Capa da Série 3">
+                    <div class="movie-info">
+                        <h3>Flow</h3>
+                        <p>Ano: 2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; Future Streaming. Todos os direitos reservados - PUCMinas.</p>
+    </footer>
+
+    <div id="mood-popup" class="mood-popup-overlay">
+        <div class="mood-popup-content">
+            <span class="close-button">&times;</span>
+            <h2>Como você está se sentindo hoje?</h2>
+            <p>Selecione um humor para personalizar suas recomendações:</p>
+            <div class="mood-options">
+                <button class="mood-button" data-mood="feliz">😄 Feliz</button>
+                <button class="mood-button" data-mood="relaxado">😌 Relaxado</button>
+                <button class="mood-button" data-mood="animado">🤩 Animado</button>
+                <button class="mood-button" data-mood="pensativo">🤔 Pensativo</button>
+                <button class="mood-button" data-mood="aventureiro">🌍 Aventureiro</button>
+                <button class="mood-button" data-mood="triste">😢 Triste</button>
+            </div>
+            <button class="skip-button">Pular</button>
+        </div>
+    </div>
+
+    <script src="mood-popup.js"></script> </body>
+</html>
