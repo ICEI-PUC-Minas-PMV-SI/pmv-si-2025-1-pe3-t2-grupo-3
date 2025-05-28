@@ -6,15 +6,17 @@
     <title>Seu Streaming - Perfil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="perfil.css">
-</head>
+    <script src="perfil.js"></script> </head>
 <body>
     <header class="header">
         <h1 class="site-title">SEU STREAMING</h1>
         <nav class="nav">
-            <a href="index.html" class="nav-item">Início</a> <a href="#" class="nav-item">Filmes</a>
+            <a href="index.html" class="nav-item">Início</a>
+            <a href="#" class="nav-item">Filmes</a>
             <a href="#" class="nav-item">Séries</a>
             <a href="#" class="nav-item">Minha Lista</a>
-            <a href="perfil.html" class="nav-item active">Perfil</a> </nav>
+            <a href="perfil.html" class="nav-item active">Perfil</a>
+        </nav>
     </header>
 
     <main class="main-content-profile">
@@ -22,13 +24,13 @@
             <h2 class="section-title-profile">Meu Perfil</h2>
 
             <div class="profile-card">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cfd72fee?q=80&w=150&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Foto de Perfil" class="profile-avatar">
+                <img src="" alt="Foto de Perfil" class="profile-avatar" id="profile-avatar">
                 <div class="profile-info">
-                    <h3>Nome de Usuário</h3>
-                    <p>Email: usuario@email.com</p>
-                    <p>Membro desde: Janeiro de 2023</p>
+                    <h3 id="profile-name"></h3>
+                    <p>Email: <span id="profile-email"></span></p>
+                    <p>Membro desde: <span id="profile-member-since"></span></p>
                 </div>
-                <button class="edit-profile-btn">Editar Perfil</button>
+                <button class="edit-profile-btn" onclick="window.location.href='editar-perfil.html'">Editar Perfil</button>
             </div>
 
             <div class="profile-options">
