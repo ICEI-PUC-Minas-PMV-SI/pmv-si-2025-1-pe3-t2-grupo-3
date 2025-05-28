@@ -1,0 +1,262 @@
+/* editar-perfil.css */
+
+/* Reutiliza variáveis de cor e fonte do style.css ou define se for isolado */
+:root {
+    --primary-bg: #141414;
+    --secondary-bg: #282828;
+    --text-color: #e0e0e0;
+    --highlight-color: #e50914;
+    --light-text: #a0a0a0;
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reutiliza estilos de header e footer do style.css */
+/* Certifique-se de que o style.css esteja linkado no HTML para esses estilos funcionarem */
+.header {
+    background-color: var(--secondary-bg);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.8em;
+    color: var(--highlight-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-item {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--highlight-color);
+}
+
+.nav-item.active {
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--highlight-color);
+    border-radius: 2px;
+}
+
+.footer {
+    background-color: var(--secondary-bg);
+    color: var(--light-text);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+    margin-top: 50px;
+}
+
+/* Estilos específicos da página de Edição de Perfil */
+.main-content-edit-profile {
+    padding: 30px 40px;
+    max-width: 700px; /* Largura focada para o formulário */
+    margin: 40px auto;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.section-title-edit-profile {
+    font-size: 2em;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 2px solid var(--highlight-color);
+    padding-bottom: 15px;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-avatar-upload {
+    text-align: center; /* JÁ ESTAVA: Centraliza conteúdo inline/inline-block */
+    margin-bottom: 30px;
+    display: flex; /* NOVO: Usa flexbox para alinhar itens */
+    flex-direction: column; /* NOVO: Empilha os itens verticalmente */
+    align-items: center; /* NOVO: Centraliza itens horizontalmente no flex container */
+    justify-content: center; /* NOVO: Centraliza itens verticalmente (se houver espaço) */
+}
+
+.profile-avatar-current {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--highlight-color);
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
+    margin-bottom: 15px;
+}
+
+.upload-btn {
+    background-color: var(--highlight-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Mantido para que o label se comporte como um botão */
+}
+
+.upload-btn:hover {
+    background-color: #ff2a37;
+}
+
+.input-group {
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9em;
+    color: var(--light-text);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.input-group input[type="text"],
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.3);
+}
+
+.input-group input:disabled {
+    background-color: #3a3a3a;
+    cursor: not-allowed;
+    color: var(--light-text);
+}
+
+.save-profile-btn {
+    background-color: var(--highlight-color);
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.save-profile-btn:hover {
+    background-color: #ff2a37;
+}
+
+.cancel-btn {
+    background-color: transparent;
+    color: var(--light-text);
+    border: 1px solid var(--border-color);
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.cancel-btn:hover {
+    background-color: var(--border-color);
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-content-edit-profile {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .section-title-edit-profile {
+        font-size: 1.8em;
+    }
+    .profile-avatar-current {
+        width: 120px;
+        height: 120px;
+    }
+    .upload-btn {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+    .input-group input {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    .save-profile-btn,
+    .cancel-btn {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content-edit-profile {
+        padding: 15px;
+    }
+    .profile-avatar-current {
+        width: 100px;
+        height: 100px;
+    }
+}
