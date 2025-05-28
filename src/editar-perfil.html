@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTURE STREAMING - Editar Perfil</title>
+    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="editar-perfil.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="site-title">FUTURE STREAMING</h1>
+        <nav class="nav">
+            <a href="index.html" class="nav-item">Início</a>
+            <a href="#" class="nav-item">Filmes</a>
+            <a href="#" class="nav-item">Séries</a>
+            <a href="#" class="nav-item">Minha Lista</a>
+            <a href="perfil.html" class="nav-item active">Perfil</a> </nav>
+    </header>
+
+    <main class="main-content-edit-profile">
+        <section class="edit-profile-section">
+            <h2 class="section-title-edit-profile">Editar Meu Perfil</h2>
+            
+            <form class="edit-profile-form">
+                <div class="profile-avatar-upload">
+                    <img src="https://via.placeholder.com/150?text=Carregando..." alt="Foto de Perfil Atual" class="profile-avatar-current" id="current-avatar">
+                    <label for="avatar-upload" class="upload-btn">Alterar Foto</label>
+                    <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                </div>
+
+                <div class="input-group">
+                    <label for="full-name">Nome Completo</label>
+                    <input type="text" id="full-name" name="full-name" value="" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="" required disabled> </div>
+                <div class="input-group">
+                    <label for="username">Nome de Usuário</label>
+                    <input type="text" id="username" name="username" value="" required>
+                </div>
+                <div class="input-group">
+                    <label for="old-password">Senha Antiga (para alterar senha)</label>
+                    <input type="password" id="old-password" name="old-password" placeholder="Deixe em branco se não for alterar">
+                </div>
+                <div class="input-group">
+                    <label for="new-password">Nova Senha</label>
+                    <input type="password" id="new-password" name="new-password" placeholder="Deixe em branco se não for alterar">
+                </div>
+                <div class="input-group">
+                    <label for="confirm-new-password">Confirmar Nova Senha</label>
+                    <input type="password" id="confirm-new-password" name="confirm-new-password" placeholder="Repita a nova senha">
+                </div>
+
+                <button type="submit" class="save-profile-btn">Salvar Alterações</button>
+                <button type="button" class="cancel-btn">Cancelar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; FUTURE STREAMING. Todos os direitos reservados - PUCMinas.</p>
+    </footer>
+
+    <script src="editar-perfil.js"></script> </body>
+</html>
