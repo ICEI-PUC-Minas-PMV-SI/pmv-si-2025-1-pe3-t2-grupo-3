@@ -1,0 +1,78 @@
+/* filmes.css */
+
+/* Reutiliza variáveis de cor e fonte do style.css ou define se for isolado */
+/* (Se você já importa style.css, pode não precisar dessas linhas) */
+:root {
+    --primary-bg: #141414;
+    --secondary-bg: #282828;
+    --text-color: #e0e0e0;
+    --highlight-color: #e50914;
+    --light-text: #a0a0a0;
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reutiliza estilos de header e footer do style.css */
+/* e nav/nav-item */
+
+/* Estilos específicos da página de todos os filmes */
+.main-content-all-movies {
+    padding: 30px 40px;
+    max-width: 1300px; /* Largura similar ao main-content do index.html */
+    margin: 20px auto;
+}
+
+.all-movies-section .section-title {
+    font-size: 2em;
+    color: var(--text-color);
+    margin-bottom: 25px;
+    border-left: 5px solid var(--highlight-color);
+    padding-left: 15px;
+}
+
+/* O grid de filmes agora usa a mesma estrutura de display de grade do index.html */
+/* Copiado do .content-grid original do style.css antes de virar carrossel */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Responsivo, mínimo de 180px */
+    gap: 25px;
+    justify-content: center; /* Centraliza itens se houver espaço extra */
+}
+
+/* Os estilos para .movie-item, .movie-info, .movie-item img etc. são reutilizados */
+/* de style.css ou carousel.css, então não precisam ser redefinidos aqui, */
+/* a menos que você queira um comportamento diferente nesta página específica. */
+
+/* Adaptação para telas menores, se necessário */
+@media (max-width: 768px) {
+    .main-content-all-movies {
+        padding: 20px;
+    }
+    .all-movies-section .section-title {
+        font-size: 1.8em;
+    }
+    .movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content-all-movies {
+        padding: 15px;
+    }
+    .movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+}
