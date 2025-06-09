@@ -1,40 +1,50 @@
 // login.js
 
+// As funções hashString e showMessage agora são carregadas de global-functions.js.
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.login-form');
+    const messageDisplayId = 'login-message';
 
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Impede o envio padrão do formulário
+            event.preventDefault();
+            showMessage(messageDisplayId, '', 'none'); // Limpa mensagens anteriores
 
-            const emailOrUsername = document.getElementById('email').value;
+            const emailOrUsername = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
 
+            if (emailOrUsername === '' || password === '') {
+                showMessage(messageDisplayId, 'Por favor, preencha todos os campos.');
+                return;
+            }
+
             try {
-                // Carrega o arquivo JSON de usuários
-                const response = await fetch('users.json');
-                const users = await response.json();
+                const hashedPasswordInput = await hashString(password);
 
-                // Procura pelo usuário
-                const user = users.find(u =>
-                    (u.email === emailOrUsername || u.username === emailOrUsername) &&
-                    u.password === password
-                );
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ emailOrUsername, hashedPassword: hashedPasswordInput })
+                });
 
-                if (user) {
-                    // Login bem-sucedido
-                    alert('Login realizado com sucesso! Bem-vindo, ' + user.profile.name + '!');
-                    // O ideal aqui seria armazenar o ID do usuário em localStorage/sessionStorage
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    window.location.href = 'index.html'; // Redireciona APENAS se o login for bem-sucedido
+                const data = await response.json();
+
+                if (response.ok) {
+                    showMessage(messageDisplayId, data.message + ' Redirecionando...', 'success', 2000);
+                    loginForm.reset();
+                    localStorage.setItem('currentUser', JSON.stringify(data.user));
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
                 } else {
-                    // Credenciais inválidas
-                    alert('Email/Usuário ou Senha inválidos.');
-                    // Permanece na página de login
+                    showMessage(messageDisplayId, data.error || 'Erro desconhecido ao fazer login.');
                 }
             } catch (error) {
-                console.error('Erro ao carregar ou processar usuários:', error);
-                alert('Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.');
+                console.error('Erro ao comunicar com o backend para login:', error);
+                showMessage(messageDisplayId, 'Ocorreu um erro de comunicação com o servidor. Tente novamente mais tarde.');
             }
         });
     }

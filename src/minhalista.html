@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUTURE STREAMING - Minha Lista</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="filmes.css">
+    <link rel="stylesheet" href="minhalista.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="site-title">FUTURE STREAMING</h1>
+        <nav class="nav">
+            <a href="index.html" class="nav-item">Início</a>
+            <a href="filmes.html" class="nav-item">Filmes</a>
+            <a href="series.html" class="nav-item">Séries</a>
+            <a href="minhalista.html" class="nav-item active">Minha Lista</a>
+            <a href="perfil.html" class="nav-item">Perfil</a>
+        </nav>
+    </header>
+
+    <main class="main-content-all-movies">
+        <section class="all-movies-section">
+            <h2 class="section-title">Minha Lista de Filmes e Séries</h2>
+            <div id="minha-lista-message" class="message" style="display: none;"></div>
+            <div class="movies-grid" id="my-list-grid">
+                <p id="empty-list-message" style="text-align: center; color: var(--light-text); display: none;">Sua lista está vazia. Adicione filmes e séries!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© Future Streaming. Todos os direitos reservados - PUCMinas.</p>
+    </footer>
+    <script src="global-functions.js"></script>
+    <script src="minhalista.js"></script>
+</body>
+</html>

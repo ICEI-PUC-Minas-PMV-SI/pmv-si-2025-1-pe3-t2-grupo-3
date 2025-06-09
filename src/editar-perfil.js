@@ -1,5 +1,7 @@
 // editar-perfil.js
 
+// As funções hashString e showMessage agora são carregadas de global-functions.js.
+
 document.addEventListener('DOMContentLoaded', () => {
     const currentAvatar = document.getElementById('current-avatar');
     const avatarUpload = document.getElementById('avatar-upload');
@@ -11,111 +13,137 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmNewPasswordInput = document.getElementById('confirm-new-password');
     const editProfileForm = document.querySelector('.edit-profile-form');
     const cancelBtn = document.querySelector('.cancel-btn');
+    const messageDisplayId = 'edit-profile-message';
+
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    // 1. Carregar dados do usuário logado ao carregar a página
     if (currentUser) {
         fullNameInput.value = currentUser.profile.name || '';
         emailInput.value = currentUser.email || '';
         usernameInput.value = currentUser.username || '';
-        
-        currentAvatar.src = currentUser.profile.avatar || 'https://via.placeholder.com/150?text=Sem+Foto'; 
+
+        currentAvatar.src = currentUser.profile.avatar || 'https://via.placeholder.com/150?text=Sem+Foto';
         currentAvatar.alt = `Foto de perfil de ${currentUser.profile.name || 'Usuário'}`;
 
     } else {
-        alert('Nenhum usuário logado. Redirecionando para o login.');
-        window.location.href = 'login.html'; 
-        return; 
+        alert('Nenhum usuário logado. Redirecionando para o login.'); // Mantido alert aqui para redirecionamento crítico
+        window.location.href = 'login.html';
+        return;
     }
 
-    // 2. Pré-visualização da imagem do avatar ao selecionar um arquivo
     avatarUpload.addEventListener('change', (event) => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = (e) => {
                 currentAvatar.src = e.target.result;
-                currentUser.profile.avatar = e.target.result; 
+                currentUser.profile.avatar = e.target.result;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                showMessage(messageDisplayId, 'Foto de perfil atualizada para pré-visualização. Clique em Salvar Alterações para confirmar.', 'success', 5000);
             };
             reader.readAsDataURL(file);
         }
     });
 
-    // 3. Lógica para salvar as alterações ao clicar no botão "Salvar Alterações"
-    editProfileForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Impede o envio padrão do formulário
+    editProfileForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        showMessage(messageDisplayId, '', 'none'); // Limpa mensagens anteriores
 
-        // Pega os valores atualizados dos campos
-        const newFullName = fullNameInput.value.trim(); // .trim() remove espaços em branco extras
+        const newFullName = fullNameInput.value.trim();
         const newUsername = usernameInput.value.trim();
         const oldPassword = oldPasswordInput.value;
         const newPassword = newPasswordInput.value;
         const confirmNewPassword = confirmNewPasswordInput.value;
 
-        // --- VALIDAÇÕES DE CAMPOS OBRIGATÓRIOS ---
         if (newFullName === '') {
-            alert('Por favor, preencha o campo "Nome Completo".');
+            showMessage(messageDisplayId, 'Por favor, preencha o campo "Nome Completo".');
             fullNameInput.focus();
             return;
         }
         if (newUsername === '') {
-            alert('Por favor, preencha o campo "Nome de Usuário".');
+            showMessage(messageDisplayId, 'Por favor, preencha o campo "Nome de Usuário".');
             usernameInput.focus();
             return;
         }
 
-        // --- VALIDAÇÃO DA ALTERAÇÃO DE SENHA ---
-        if (newPassword || confirmNewPassword) { // Se o usuário tentou alterar a senha (pelo menos um campo preenchido)
+        let updatedPassword = null;
+        if (oldPassword || newPassword || confirmNewPassword) {
             if (oldPassword === '') {
-                alert('Para alterar a senha, você deve digitar sua "Senha Antiga".');
+                showMessage(messageDisplayId, 'Para alterar a senha, você deve digitar sua "Senha Antiga".');
                 oldPasswordInput.focus();
                 return;
             }
-            // Simulação: Em um sistema real, você compararia o HASH da senha antiga com o HASH do input
-            if (oldPassword !== currentUser.password) { 
-                alert('Senha antiga incorreta!');
+
+            const hashedOldPasswordInput = await hashString(oldPassword);
+
+            if (hashedOldPasswordInput !== currentUser.password) {
+                showMessage(messageDisplayId, 'Senha antiga incorreta!');
                 oldPasswordInput.focus();
                 return;
             }
+
             if (newPassword === '') {
-                alert('Por favor, digite sua "Nova Senha".');
+                showMessage(messageDisplayId, 'Por favor, digite sua "Nova Senha".');
                 newPasswordInput.focus();
                 return;
             }
-            if (newPassword.length < 6) { 
-                alert('A "Nova Senha" deve ter no mínimo 6 caracteres.');
+            if (newPassword.length < 6) {
+                showMessage(messageDisplayId, 'A "Nova Senha" deve ter no mínimo 6 caracteres.');
                 newPasswordInput.focus();
                 return;
             }
             if (newPassword !== confirmNewPassword) {
-                alert('A "Nova Senha" e a "Confirmação da Nova Senha" não coincidem.');
+                showMessage(messageDisplayId, 'A "Nova Senha" e a "Confirmação da Nova Senha" não coincidem.');
                 confirmNewPasswordInput.focus();
                 return;
             }
-            // Se todas as validações de senha passarem, atualiza a senha
-            currentUser.password = newPassword; 
-        } else if (oldPassword !== '') {
-            // Se a senha antiga foi preenchida mas as novas senhas não
-            alert('Para alterar a senha, você deve preencher os campos "Nova Senha" e "Confirmar Nova Senha".');
-            newPasswordInput.focus();
-            return;
+            updatedPassword = await hashString(newPassword);
         }
 
-        // Atualizar outras informações do perfil no objeto currentUser
-        currentUser.profile.name = newFullName;
-        currentUser.username = newUsername;
-        // O avatar já é atualizado na pré-visualização no evento 'change' se uma nova imagem foi selecionada.
+        const updateData = {
+            userId: currentUser.id, // Envia o ID do usuário
+            newFullName: newFullName,
+            newUsername: newUsername,
+            avatar: currentUser.profile.avatar
+        };
+        if (updatedPassword) {
+            updateData.newPassword = updatedPassword;
+        }
 
-        // Simular salvamento: Salva o objeto currentUser atualizado no localStorage
-        localStorage.setItem('currentUser', JSON.stringify(currentUser)); 
+        try {
+            const response = await fetch(`http://localhost:3000/api/users/${currentUser.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateData)
+            });
 
-        alert('Perfil atualizado com sucesso! (Estas alterações são locais e temporárias)');
-        window.location.href = 'perfil.html'; // Redireciona de volta para a página de perfil
+            const data = await response.json();
+
+            if (response.ok) {
+                // Atualiza o currentUser no localStorage com os dados retornados pelo backend
+                localStorage.setItem('currentUser', JSON.stringify(data.user));
+
+                showMessage(messageDisplayId, data.message + ' Redirecionando...', 'success', 2000);
+                oldPasswordInput.value = '';
+                newPasswordInput.value = '';
+                confirmNewPasswordInput.value = '';
+
+                setTimeout(() => {
+                    window.location.href = 'perfil.html';
+                }, 2000);
+            } else {
+                showMessage(messageDisplayId, data.error || 'Erro desconhecido ao atualizar perfil.');
+            }
+        } catch (error) {
+            console.error('Erro ao comunicar com o backend para atualizar perfil:', error);
+            showMessage(messageDisplayId, 'Ocorreu um erro de comunicação com o servidor. Tente novamente mais tarde.');
+        }
     });
 
-    // 4. Lógica para o botão Cancelar
     cancelBtn.addEventListener('click', () => {
-        window.location.href = 'perfil.html'; // Volta para a página de perfil sem salvar
+        window.location.href = 'perfil.html';
     });
 });

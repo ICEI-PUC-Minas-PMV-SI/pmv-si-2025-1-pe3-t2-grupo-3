@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUTURE STREAMING - Editar Perfil</title>
-    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="editar-perfil.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="editar-perfil.css">
 </head>
 <body>
     <header class="header">
         <h1 class="site-title">FUTURE STREAMING</h1>
         <nav class="nav">
             <a href="index.html" class="nav-item">Início</a>
-            <a href="#" class="nav-item">Filmes</a>
-            <a href="#" class="nav-item">Séries</a>
-            <a href="#" class="nav-item">Minha Lista</a>
-            <a href="perfil.html" class="nav-item active">Perfil</a> </nav>
+            <a href="filmes.html" class="nav-item">Filmes</a>
+            <a href="series.html" class="nav-item">Séries</a>
+            <a href="minhalista.html" class="nav-item">Minha Lista</a>
+            <a href="perfil.html" class="nav-item active">Perfil</a>
+        </nav>
     </header>
 
     <main class="main-content-edit-profile">
         <section class="edit-profile-section">
             <h2 class="section-title-edit-profile">Editar Meu Perfil</h2>
             
+            <div id="edit-profile-message" class="message" style="display: none;"></div>
+
             <form class="edit-profile-form">
                 <div class="profile-avatar-upload">
                     <img src="https://via.placeholder.com/150?text=Carregando..." alt="Foto de Perfil Atual" class="profile-avatar-current" id="current-avatar">
@@ -34,7 +38,8 @@
                 </div>
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="" required disabled> </div>
+                    <input type="email" id="email" name="email" value="" required disabled>
+                </div>
                 <div class="input-group">
                     <label for="username">Nome de Usuário</label>
                     <input type="text" id="username" name="username" value="" required>
@@ -62,5 +67,7 @@
         <p>&copy; FUTURE STREAMING. Todos os direitos reservados - PUCMinas.</p>
     </footer>
 
-    <script src="editar-perfil.js"></script> </body>
+    <script src="global-functions.js"></script>
+    <script src="editar-perfil.js"></script>
+</body>
 </html>

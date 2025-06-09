@@ -6,15 +6,17 @@
     <title>Seu Streaming - Perfil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="perfil.css">
-    <script src="perfil.js"></script> </head>
+    <script src="global-functions.js"></script>
+    <script src="perfil.js"></script>
+</head>
 <body>
     <header class="header">
         <h1 class="site-title">SEU STREAMING</h1>
         <nav class="nav">
             <a href="index.html" class="nav-item">Início</a>
-            <a href="#" class="nav-item">Filmes</a>
-            <a href="#" class="nav-item">Séries</a>
-            <a href="#" class="nav-item">Minha Lista</a>
+            <a href="filmes.html" class="nav-item">Filmes</a>
+            <a href="series.html" class="nav-item">Séries</a>
+            <a href="minhalista.html" class="nav-item">Minha Lista</a>
             <a href="perfil.html" class="nav-item active">Perfil</a>
         </nav>
     </header>
@@ -40,7 +42,7 @@
                     <li><a href="#">Histórico de Visualização</a></li>
                     <li><a href="#">Preferências de Notificação</a></li>
                     <li><a href="#">Alterar Senha</a></li>
-                    <li><a href="#">Sair</a></li>
+                    <li class="logout-item"><a href="#" id="logout-btn">Sair</a></li>
                 </ul>
             </div>
         </section>

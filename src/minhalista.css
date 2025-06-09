@@ -1,0 +1,30 @@
+/* minhalista.css */
+
+/* Estilos para o botão de remover da lista */
+.remove-from-list-btn {
+    background-color: var(--highlight-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    display: block; 
+    width: calc(100% - 20px); 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.remove-from-list-btn:hover {
+    background-color: #d32f2f; 
+}
+
+/* Garante que o movie-info tenha flex-direction column para o botão ficar abaixo */
+.movie-item .movie-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: auto; 
+}

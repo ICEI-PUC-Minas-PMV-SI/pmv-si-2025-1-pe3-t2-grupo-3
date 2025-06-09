@@ -17,8 +17,8 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* Suaviza a fonte em navegadores WebKit */
-    -moz-osx-font-smoothing: grayscale; /* Suaviza a fonte no Firefox */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Cabeçalho */
@@ -76,8 +76,8 @@ body {
 /* Conteúdo Principal */
 .main-content {
     padding: 30px 40px;
-    max-width: 1300px; /* Limita a largura para melhor leitura */
-    margin: 20px auto; /* Centraliza o conteúdo */
+    max-width: 1300px;
+    margin: 20px auto;
 }
 
 .content-section {
@@ -94,9 +94,9 @@ body {
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Responsivo, mínimo de 180px */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 25px;
-    justify-content: center; /* Centraliza itens se houver espaço extra */
+    justify-content: center;
 }
 
 .movie-item {
@@ -107,6 +107,8 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-align: center;
+    display: flex; /* Adicionado para organizar o conteúdo interno */
+    flex-direction: column; /* Coloca os itens em coluna */
 }
 
 .movie-item:hover {
@@ -116,29 +118,54 @@ body {
 
 .movie-item img {
     width: 100%;
-    height: 270px; /* Altura fixa para as capas */
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    height: 270px;
+    object-fit: cover;
     display: block;
     border-bottom: 1px solid var(--border-color);
 }
 
 .movie-info {
     padding: 15px 10px;
+    flex-grow: 1; /* Permite que o info cresça e empurre o botão para baixo */
+    display: flex; /* Adicionado para organizar o conteúdo interno */
+    flex-direction: column; /* Coloca os itens em coluna */
+    justify-content: space-between; /* Espalha o conteúdo e empurra o botão para o final */
 }
 
 .movie-info h3 {
     font-size: 1.1em;
     margin: 0 0 5px;
     color: var(--text-color);
-    white-space: nowrap; /* Evita que o título quebre em várias linhas */
-    overflow: hidden; /* Oculta o texto que excede */
-    text-overflow: ellipsis; /* Adiciona '...' se o texto for muito longo */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .movie-info p {
     font-size: 0.9em;
     color: var(--light-text);
     margin: 0;
+}
+
+/* Estilo para o botão "Adicionar à Lista" */
+.add-to-list-btn {
+    background-color: #4a4a4a; /* Um cinza mais escuro */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    cursor: pointer;
+    margin-top: 10px; /* Espaço entre o ano e o botão */
+    transition: background-color 0.3s ease;
+    display: block; /* Ocupa a largura total do movie-info */
+    width: calc(100% - 20px); /* Ajusta à largura do padding */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-to-list-btn:hover {
+    background-color: var(--highlight-color);
 }
 
 /* Rodapé */
@@ -152,6 +179,60 @@ body {
     margin-top: 50px;
 }
 
+/* Estilos para Mensagens de Feedback (Sucesso/Erro) */
+.message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.message.error {
+    background-color: #d32f2f;
+    color: white;
+    border: 1px solid #b71c1c;
+}
+
+.message.success {
+    background-color: #43a047;
+    color: white;
+    border: 1px solid #2e7d32;
+}
+
+/* Estilo para o botão "Carregar Mais" */
+.load-more-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 15px 30px;
+    background-color: var(--highlight-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: fit-content;
+}
+
+.load-more-btn:hover {
+    background-color: #ff2a37;
+    transform: translateY(-3px);
+}
+
+.loading-message {
+    text-align: center;
+    color: var(--light-text);
+    font-size: 1.1em;
+    padding: 20px 0;
+}
+
 /* Responsividade Básica */
 @media (max-width: 768px) {
     .header {
@@ -161,7 +242,7 @@ body {
 
     .nav {
         margin-top: 15px;
-        flex-wrap: wrap; /* Permite que os itens de navegação quebrem a linha */
+        flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
     }
@@ -175,12 +256,12 @@ body {
     }
 
     .content-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Reduz o tamanho mínimo */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 15px;
     }
 
     .movie-item img {
-        height: 220px; /* Ajusta a altura da capa */
+        height: 220px;
     }
 
     .section-title {
@@ -208,5 +289,10 @@ body {
 
     .movie-info p {
         font-size: 0.8em;
+    }
+
+    .add-to-list-btn, .remove-from-list-btn {
+        font-size: 0.75em;
+        padding: 6px 10px;
     }
 }
